@@ -1,0 +1,14 @@
+# Environments:
+env/
+venv/
+.conda/
+
+# Jupyter Notebooks:
+.ipynb_checkpoints/
+
+# Python:
+__pycache__/
+*.pyc
+
+# Data (for big ones):
+data/
