@@ -2,9 +2,16 @@
 
 This repository contains a comprehensive social network analysis project for the **Social Computing and Personalization** course at the **Technical University of Madrid (UPM)**. The project focuses on leveraging advanced graph theory and GPU-accelerated computing to extract insights from real-world complex systems.
 
-## Project Overview
+## Project Overview: World Trade Web (WTW) Analysis
 
-**(...NETWROK INFO...)**
+The **World Trade Web** is a complex directed and weighted network where nodes represent sovereign nations and edges represent synchronized trade flows. Unlike simple graphs, the WTW exhibits a **"Rich-Club"** phenomenon and a core-periphery structure that defines the global economic hierarchy.
+
+By modeling international trade using the **BACI dataset (HS92 Revision)**, this project aims to:
+
+* **Map Global Dependencies**: Quantify the structural importance of nations beyond their GDP by using **Eigenvector Centrality** and **PageRank**.
+* **Identify Trade Blocs**: Uncover hidden geopolitical clusters through **Louvain Community Detection**, revealing how geographic and political proximity influence economic integration.
+* **Stress-Test the System**: Simulate "Targeted Attacks" on critical hubs (like major manufacturing or energy exporters) to measure the **cascading failures** and the overall decrease in global network efficiency.
+* **Analyze Evolution**: Track the transition from a unipolar trade world to a multipolar system by comparing network snapshots across different decades.
 
 The analysis includes:
 
