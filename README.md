@@ -37,6 +37,15 @@ This project is optimized for high-performance computing. It utilizes **NetworkX
 ### Prerequisites
 Ensure you have [Conda](https://docs.conda.io/en/latest/) installed on your system (**WSL2** is highly recommended for Windows users to ensure full CUDA compatibility).
 
+### Data Setup
+This project uses the **[BACI International Trade Database (HS92 Revision)](https://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=37)**:
+
+1) Download the raw CSV files for the desired years from CEPII BACI (click in the URL above).
+
+2) Place the raw CSVs in data/raw/ and the country code dictionary in data/.
+
+3) Run python src/data_processing.py to generate the optimized Parquet files.
+
 ### Installation
 
 1) **Clone the repository:**
