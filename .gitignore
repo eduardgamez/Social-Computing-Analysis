@@ -13,5 +13,7 @@ __pycache__/
 # Data (Ignores the contents of the data folders, but not the folders themselves):
 data/processed/*
 data/raw/*
+data/processed/*.gexf
+data/processed/*.pickle
 !data/raw/.gitkeep
 !data/processed/.gitkeep
