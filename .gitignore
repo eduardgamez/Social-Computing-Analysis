@@ -17,3 +17,6 @@ data/processed/*.gexf
 data/processed/*.pickle
 !data/raw/.gitkeep
 !data/processed/.gitkeep
+
+# macOS
+.DS_Store
