@@ -3,7 +3,7 @@ import networkx as nx
 import pandas as pd
 from pathlib import Path
 
-def visualize_map_graph(input_filename: str, output_html: str, threshold: float = 500000, title: str = '') -> None:
+def visualize_map_graph(input_filename: str, output_html: str, threshold: float = 500000, top_n: int = None, title: str = '') -> None:
     """
     Visualizes a geographic network graph using Plotly and saves it as an HTML file.
     """
@@ -26,8 +26,14 @@ def visualize_map_graph(input_filename: str, output_html: str, threshold: float 
     df_coords.ISO3 = df_coords.ISO3.astype('category')
     df_coords[['LAT', 'LONG']] = df_coords[['LAT', 'LONG']].astype('float32')
 
-    # 3) Filter the graph to avoid overloading the map (only routes over threshold USD) -> ADJUSTABLE:
-    graph = nx.DiGraph(((u, v, d) for u, v, d in graph.edges(data=True) if d['weight'] > threshold))
+    # 3) Filter the graph to avoid overloading the map:
+    if top_n is not None:
+        edges = sorted(graph.edges(data=True), key=lambda x: x[2].get('weight', 0), reverse=True)[:top_n]
+        graph = nx.DiGraph(edges)
+        title_suffix = f" (Top {top_n} Rutas)"
+    else:
+        graph = nx.DiGraph(((u, v, d) for u, v, d in graph.edges(data=True) if d['weight'] > threshold))
+        title_suffix = f" (> {threshold/1000}M USD)"
 
     # 4) Create a coordinate dictionary for fast (O(1)) search:
     coords_dict = df_coords.set_index('ISO3')[['LAT', 'LONG']].T.to_dict('list')
@@ -93,7 +99,7 @@ def visualize_map_graph(input_filename: str, output_html: str, threshold: float 
 
     # 8) Configure map style and display it:
     fig.update_layout(
-        title_text=f"{title} (> {threshold/1000}M USD)",
+        title_text=f"{title}{title_suffix}",
         showlegend=False,
         geo=dict(
             showland=True,

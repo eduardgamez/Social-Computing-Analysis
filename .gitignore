@@ -18,5 +18,8 @@ data/processed/*.pickle
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 
+# IDE
+.vscode/
+
 # macOS
 .DS_Store
